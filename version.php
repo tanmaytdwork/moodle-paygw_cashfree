@@ -26,7 +26,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->version   = 2026061100;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2024100100;        // Requires this Moodle version (4.5).
-$plugin->supported = [405, 502];        // Supported Versions
+$plugin->supported = [405, 502];        // Supported Moodle versions: 4.5 LTS through 5.2.
 $plugin->component = 'paygw_cashfree';  // Full name of the plugin.
 $plugin->maturity  = MATURITY_ALPHA;
 $plugin->release   = 'v1.0.0';
