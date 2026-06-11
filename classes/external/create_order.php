@@ -40,7 +40,6 @@ use paygw_cashfree\cashfree_helper;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class create_order extends external_api {
-
     /**
      * Returns description of method parameters.
      *

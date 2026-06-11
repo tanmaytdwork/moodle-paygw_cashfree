@@ -31,8 +31,6 @@ use core\di;
 use core\http_client;
 use GuzzleHttp\Exception\GuzzleException;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Cashfree PG REST API helper.
  *
@@ -40,7 +38,6 @@ defined('MOODLE_INTERNAL') || die();
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class cashfree_helper {
-
     /** @var string The Cashfree API version sent in the x-api-version header. */
     public const API_VERSION = '2023-08-01';
 
@@ -117,8 +114,13 @@ class cashfree_helper {
      * @param array $tags Key-value order tags (used to resolve config in the webhook).
      * @return array|null Decoded API response, or null on failure.
      */
-    public function create_order(float $amount, string $currency, array $customerdetails,
-            string $returnurl, array $tags): ?array {
+    public function create_order(
+        float $amount,
+        string $currency,
+        array $customerdetails,
+        string $returnurl,
+        array $tags
+    ): ?array {
         return $this->request('POST', '/pg/orders', [
             'order_amount' => round($amount, 2),
             'order_currency' => $currency,

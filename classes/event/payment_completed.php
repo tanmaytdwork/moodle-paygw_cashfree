@@ -24,8 +24,6 @@
 
 namespace paygw_cashfree\event;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Event fired when a Cashfree payment has been completed and the order delivered.
  *
@@ -43,7 +41,6 @@ defined('MOODLE_INTERNAL') || die();
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class payment_completed extends \core\event\base {
-
     /**
      * Initialise the event data.
      */

@@ -33,7 +33,6 @@ use GuzzleHttp\Psr7\Response;
  * @covers \paygw_cashfree\external\create_order
  */
 final class create_order_test extends \advanced_testcase {
-
     /**
      * Create an enrol_fee payable on a Cashfree account.
      *

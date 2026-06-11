@@ -37,7 +37,6 @@ use GuzzleHttp\Psr7\Response;
  * @covers \paygw_cashfree\external\transaction_complete
  */
 final class transaction_complete_test extends \advanced_testcase {
-
     /**
      * A PAID order for the current user delivers and reports success.
      */

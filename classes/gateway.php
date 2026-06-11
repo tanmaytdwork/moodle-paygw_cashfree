@@ -31,7 +31,6 @@ namespace paygw_cashfree;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class gateway extends \core_payment\gateway {
-
     /**
      * The currencies supported by Cashfree.
      *
@@ -94,8 +93,12 @@ class gateway extends \core_payment\gateway {
      * @param array $files
      * @param array $errors form errors (passed by reference)
      */
-    public static function validate_gateway_form(\core_payment\form\account_gateway $form,
-            \stdClass $data, array $files, array &$errors): void {
+    public static function validate_gateway_form(
+        \core_payment\form\account_gateway $form,
+        \stdClass $data,
+        array $files,
+        array &$errors
+    ): void {
         if ($data->enabled && (empty($data->clientid) || empty($data->secret))) {
             $errors['enabled'] = get_string('gatewaycannotbeenabled', 'payment');
         }

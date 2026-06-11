@@ -32,7 +32,6 @@ use core_privacy\local\request\writer;
  * @covers \paygw_cashfree\privacy\provider
  */
 final class provider_test extends \advanced_testcase {
-
     /**
      * Insert a Cashfree payment row and return its (fake) payment id.
      *
@@ -66,7 +65,7 @@ final class provider_test extends \advanced_testcase {
         $writer = writer::with_context($context);
         $this->assertTrue($writer->has_any_data());
 
-        // export_payment_data appends the gateway name to the subcontext.
+        // The export_payment_data() call appends the gateway name to the subcontext.
         $exported = $writer->get_data(array_merge($subcontext, [get_string('gatewayname', 'paygw_cashfree')]));
         $this->assertEquals('order_xyz', $exported->orderid);
         $this->assertEquals('cf_order_xyz', $exported->paymentid);
@@ -98,7 +97,7 @@ final class provider_test extends \advanced_testcase {
         $keep = $this->insert_row('order_keep', 1);
         $drop = $this->insert_row('order_drop', 2);
 
-        // "paymentid IN (:pid)" — delete only the dropped payment's row.
+        // Delete only the dropped payment's row ("paymentid IN (:pid)").
         provider::delete_data_for_payment_sql(':pid', ['pid' => $drop]);
 
         $this->assertFalse($DB->record_exists('paygw_cashfree', ['cf_orderid' => 'order_drop']));

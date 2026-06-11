@@ -30,7 +30,6 @@ namespace paygw_cashfree;
  * @covers \paygw_cashfree\gateway
  */
 final class gateway_test extends \advanced_testcase {
-
     /**
      * INR (the primary Cashfree currency) must be supported.
      */

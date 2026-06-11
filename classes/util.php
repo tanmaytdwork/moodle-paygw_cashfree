@@ -27,8 +27,6 @@ namespace paygw_cashfree;
 use core_payment\helper;
 use paygw_cashfree\event\payment_completed;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Shared helpers used by both the AJAX return path and the webhook.
  *
@@ -36,7 +34,6 @@ defined('MOODLE_INTERNAL') || die();
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class util {
-
     /**
      * Verify a Cashfree order server-side and, if it is paid, deliver it.
      *
@@ -52,8 +49,13 @@ class util {
      * @param int $userid The id of the user the order belongs to.
      * @return array [success => bool, message => string]
      */
-    public static function verify_and_deliver(string $component, string $paymentarea, int $itemid,
-            string $orderid, int $userid): array {
+    public static function verify_and_deliver(
+        string $component,
+        string $paymentarea,
+        int $itemid,
+        string $orderid,
+        int $userid
+    ): array {
         global $DB;
 
         $config = (object) helper::get_gateway_configuration($component, $paymentarea, $itemid, 'cashfree');
@@ -88,10 +90,12 @@ class util {
         // request body, and checking them against Cashfree's own tags stops a request body
         // from dictating what gets delivered.
         $tags = $orderdetails['order_tags'] ?? [];
-        if (($tags['component'] ?? '') !== $component
+        if (
+            ($tags['component'] ?? '') !== $component
                 || ($tags['paymentarea'] ?? '') !== $paymentarea
                 || (string) ($tags['itemid'] ?? '') !== (string) $itemid
-                || (string) ($tags['userid'] ?? '') !== (string) $userid) {
+                || (string) ($tags['userid'] ?? '') !== (string) $userid
+        ) {
             return ['success' => false, 'message' => get_string('ordermismatch', 'paygw_cashfree')];
         }
 
@@ -103,8 +107,16 @@ class util {
         }
 
         try {
-            $paymentid = helper::save_payment($payable->get_account_id(), $component, $paymentarea,
-                $itemid, $userid, $amount, $currency, 'cashfree');
+            $paymentid = helper::save_payment(
+                $payable->get_account_id(),
+                $component,
+                $paymentarea,
+                $itemid,
+                $userid,
+                $amount,
+                $currency,
+                'cashfree'
+            );
 
             $record = new \stdClass();
             $record->paymentid = $paymentid;

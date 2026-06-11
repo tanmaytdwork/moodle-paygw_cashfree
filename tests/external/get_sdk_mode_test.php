@@ -32,7 +32,6 @@ use core_payment\helper;
  * @covers \paygw_cashfree\external\get_sdk_mode
  */
 final class get_sdk_mode_test extends \advanced_testcase {
-
     /**
      * Create an enrol_fee payable on a Cashfree account with the given environment.
      *

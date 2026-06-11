@@ -30,7 +30,6 @@ namespace paygw_cashfree;
  * @covers \paygw_cashfree\cashfree_helper
  */
 final class cashfree_helper_test extends \advanced_testcase {
-
     /** @var string A sample secret key used across the signature tests. */
     private const SECRET = 'test_secret_key';
 

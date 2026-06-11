@@ -38,7 +38,6 @@ use paygw_cashfree\util;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class transaction_complete extends external_api {
-
     /**
      * Returns description of method parameters.
      *

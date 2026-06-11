@@ -33,7 +33,6 @@ use GuzzleHttp\Psr7\Response;
  * @covers \paygw_cashfree\util
  */
 final class util_test extends \advanced_testcase {
-
     /**
      * Create an enrol_fee payable backed by a Cashfree-enabled payment account.
      *
@@ -135,7 +134,7 @@ final class util_test extends \advanced_testcase {
         $names = array_map(fn($e) => $e->eventname, $events);
         $this->assertContains('\\paygw_cashfree\\event\\payment_completed', $names);
 
-        // deliver_order enrolled the user.
+        // The deliver_order() call enrolled the user.
         $this->assertTrue(is_enrolled(\context_course::instance($p->course->id), $user));
     }
 

@@ -47,8 +47,10 @@ if (empty($payload) || !is_array($payload)) {
 
 // Resolve the Moodle payment context from the order tags we set at create time.
 $tags = $payload['data']['order']['order_tags'] ?? null;
-if (empty($tags['component']) || empty($tags['paymentarea']) ||
-        !isset($tags['itemid']) || !isset($tags['userid'])) {
+if (
+    empty($tags['component']) || empty($tags['paymentarea']) ||
+        !isset($tags['itemid']) || !isset($tags['userid'])
+) {
     // Not a payload we can act on (e.g. a test ping). Accept it so Cashfree stops retrying.
     http_response_code(202);
     exit();
@@ -75,8 +77,8 @@ if ($orderid === '') {
     exit();
 }
 
-// verify_and_deliver re-fetches the order from Cashfree and only delivers when PAID,
-// so non-success events are safely ignored. Delivery is idempotent.
+// The verify_and_deliver() call re-fetches the order from Cashfree and only delivers when
+// PAID, so non-success events are safely ignored. Delivery is idempotent.
 util::verify_and_deliver($component, $paymentarea, $itemid, (string) $orderid, $userid);
 
 http_response_code(200);
