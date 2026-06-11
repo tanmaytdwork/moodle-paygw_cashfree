@@ -38,8 +38,8 @@ use GuzzleHttp\Exception\GuzzleException;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class cashfree_helper {
-    /** @var string The Cashfree API version sent in the x-api-version header. */
-    public const API_VERSION = '2023-08-01';
+    /** @var string The Cashfree API version sent in the x-api-version header.*/
+    public const API_VERSION = '2025-01-01';
 
     /** @var string The order has been fully paid. */
     public const ORDER_STATUS_PAID = 'PAID';
