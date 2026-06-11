@@ -1,0 +1,11 @@
+/* Loading placeholder shown in the payment modal while the Cashfree SDK initialises. */
+.paygw-cashfree-placeholder .bg-pulse-grey {
+    background-color: #e9ecef;
+    animation: paygw-cashfree-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes paygw-cashfree-pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}

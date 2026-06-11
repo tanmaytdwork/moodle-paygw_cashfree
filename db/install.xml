@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="payment/gateway/cashfree/db" VERSION="20260608" COMMENT="XMLDB file for Cashfree payment gateway plugin"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="paygw_cashfree" COMMENT="Stores Cashfree related information">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="paymentid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="cf_orderid" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="The Cashfree order id"/>
+        <FIELD NAME="cf_paymentid" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" COMMENT="The Cashfree internal order reference (cf_order_id)"/>
+        <FIELD NAME="status" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false" COMMENT="The Cashfree order status at delivery time"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="paymentid" TYPE="foreign-unique" FIELDS="paymentid" REFTABLE="payments" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="cf_orderid" UNIQUE="true" FIELDS="cf_orderid"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>
