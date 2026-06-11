@@ -68,19 +68,4 @@ class payment_completed extends \core\event\base {
         return "The user with id '{$this->userid}' completed a Cashfree payment with id '{$this->objectid}' " .
             "for '{$this->other['component']}' (order '{$this->other['orderid']}').";
     }
-
-    /**
-     * Validates the custom data.
-     *
-     * @throws \coding_exception
-     */
-    protected function validate_data() {
-        parent::validate_data();
-
-        foreach (['component', 'paymentarea', 'itemid', 'amount', 'currency', 'orderid'] as $key) {
-            if (!isset($this->other[$key])) {
-                throw new \coding_exception("The '$key' value must be set in other.");
-            }
-        }
-    }
 }

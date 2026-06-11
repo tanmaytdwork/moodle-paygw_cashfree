@@ -31,12 +31,12 @@ namespace paygw_cashfree;
  */
 final class gateway_test extends \advanced_testcase {
     /**
-     * INR (the primary Cashfree currency) must be supported.
+     * The plugin supports INR.
      */
     public function test_get_supported_currencies(): void {
         $currencies = gateway::get_supported_currencies();
 
-        $this->assertContains('INR', $currencies);
+        $this->assertEquals(['INR'], $currencies);
     }
 
     /**

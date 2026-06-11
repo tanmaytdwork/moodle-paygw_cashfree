@@ -34,14 +34,13 @@ class gateway extends \core_payment\gateway {
     /**
      * The currencies supported by Cashfree.
      *
-     * INR is the primary (domestic) currency. The remaining currencies are supported
-     * for Cashfree international/cross-border payments where enabled on the account.
+     * This plugin supports INR (Indian Rupees).
      *
      * @return string[]
      */
     public static function get_supported_currencies(): array {
         return [
-            'INR', 'USD', 'EUR', 'GBP', 'AED', 'CAD', 'AUD', 'SGD',
+            'INR',
         ];
     }
 

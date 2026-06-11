@@ -37,11 +37,6 @@ class util {
     /**
      * Verify a Cashfree order server-side and, if it is paid, deliver it.
      *
-     * This is the trust boundary: the order is re-fetched from Cashfree and the
-     * status, amount and currency are checked before the order is delivered. The
-     * delivery is idempotent, so it is safe to call this from both the browser
-     * return path and the webhook for the same order.
-     *
      * @param string $component The component the item belongs to.
      * @param string $paymentarea The payment area within the component.
      * @param int $itemid The item id within the component area.
@@ -82,13 +77,6 @@ class util {
             return ['success' => false, 'message' => get_string('paymentnotcleared', 'paygw_cashfree')];
         }
 
-        // Bind the order to the item and user being delivered. Cashfree echoes back the
-        // order_tags we set at creation time, so this is the authoritative record of what
-        // the order was created for. Without this, a PAID order for one item or user could
-        // be replayed against a different (same-priced) item or user. This also hardens the
-        // webhook path: the component/paymentarea/itemid/userid passed in there come from the
-        // request body, and checking them against Cashfree's own tags stops a request body
-        // from dictating what gets delivered.
         $tags = $orderdetails['order_tags'] ?? [];
         if (
             ($tags['component'] ?? '') !== $component
