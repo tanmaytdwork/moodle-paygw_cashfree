@@ -41,7 +41,10 @@ UPI, and popular wallets.
 4. In Moodle, go to *Site administration → Payments → Payment accounts*, enable **Cashfree**,
    and configure it with those keys and the matching **Environment**.
 5. Copy the **Webhook URL** shown on the gateway settings into the Cashfree dashboard
-   (*Developers → Webhooks*). The URL must be reachable from the internet.
+   (*Developers → Webhooks → Add Webhook Endpoint*). Under **Select Events**, subscribe to
+   the **success payment** event only — that is the event this plugin uses to deliver the
+   enrolment. The URL must be reachable from the internet. Register the webhook separately in
+   both the Test and Live environments.
 6. Add the *Enrolment on payment* method to the Moodle courses you want, and configure the
    enrolment with the currency **INR (Indian Rupees)** only.
 
